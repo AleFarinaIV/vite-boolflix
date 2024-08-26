@@ -2,8 +2,8 @@
 import {store} from "../store.js"
 export default {
 methods: {
-    searchMovies(movie) {
-        this.$emit('searchMovies', movie)
+    searchMoviesAndSeries(input) {
+        this.$emit('searchMoviesAndSeries', input)
     }
 },
 data() {
@@ -20,8 +20,8 @@ data() {
         <div class="row">
             <div class="col">
                 <!-- devo creare una input con button per cercare i film -->
-                <input @keyup.enter="searchMovies(store.user_input)" type="text" v-model="store.user_input" placeholder="Cerca un film..." >
-                <button @click="searchMovies(store.user_input)">Cerca</button>
+                <input @keyup.enter="searchMoviesAndSeries(store.user_input)" type="text" v-model="store.user_input" placeholder="Cerca un film..." >
+                <button @click="searchMoviesAndSeries(store.user_input)">Cerca</button>
             </div>
         </div>
     </div>

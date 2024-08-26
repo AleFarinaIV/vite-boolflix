@@ -10,14 +10,26 @@ export default {
     AppMain
   },
   methods: {
-    getFilms(movie) {
+    getFilms(input) {
       let moviesUrl = `${store.api_url}${store.movie_endpoint}${store.api_key}` 
-      axios.get(`${moviesUrl}&query=${movie}`)
+      axios.get(`${moviesUrl}&query=${input}`)
       .then((result) => {
         let movies = result.data.results
         store.movies_array = movies
         console.log(movies)
       })
+    },
+    getTvSeries(input) {
+      let seriesUrl = `${store.api_url}${store.tv_series_endpoint}${store.api_key}`
+      axios.get(`${seriesUrl}&query=${input}`).then((result) => {
+        let series = result.data.results
+        store.tv_series_array = series
+        console.log(series)
+      })
+    },
+    getInput(input) {
+      this.getFilms(input);
+      this.getTvSeries(input);
     }
   },
   data() {
@@ -31,7 +43,7 @@ export default {
 
 <template>
 
-  <AppHeader @searchMovies="getFilms" />
+  <AppHeader @searchMoviesAndSeries="getInput" />
 
   <AppMain />
 

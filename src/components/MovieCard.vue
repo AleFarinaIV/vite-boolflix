@@ -22,11 +22,12 @@ export default {
 </script>
 
 <template>
-    <div class="col">
+    <div id="my_col" class="col">
         <div class="content">
-            <h2>Titolo: {{ movie_card.title }}</h2>
-            <h2>Titolo Originale: {{ movie_card.original_title }}</h2>
-            <h4>Lingua: {{ movie_card.original_language }}</h4>
+            <h1 class="text-danger">Film</h1>
+            <h6>Titolo: {{ movie_card.title }}</h6>
+            <h6>Titolo Originale: {{ movie_card.original_title }}</h6>
+            <span class="fw-bold me-1">Lingua: {{ movie_card.original_language }}</span>
             <span :class="`fi fi-${flagCode}`"></span>
             <h6>Voto: {{ movie_card.vote_average }} </h6>
         </div>
@@ -34,5 +35,22 @@ export default {
 </template>
 
 <style scoped>
+
+    #my_col {
+
+        min-height: 300px;
+        max-height: 300px;
+        margin-bottom: 20px;
+
+        .content {
+            min-height: 300px;
+        max-height: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+    }
 
 </style>

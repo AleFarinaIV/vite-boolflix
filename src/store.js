@@ -4,7 +4,8 @@ export const store = reactive ({
     api_key: "?api_key=bbf024ce6479c00488d2e7b78041a3e7",
     api_url: "https://api.themoviedb.org/3",
     movie_endpoint: "/search/movie",
-    tv_endpoint: "/search/tv",
+    tv_series_endpoint: "/search/tv",
     movies_array: [],
-    user_input: ""
+    user_input: "",
+    tv_series_array: [],
 })
