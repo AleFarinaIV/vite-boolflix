@@ -16,12 +16,12 @@ data() {
 
 <template>
 
-    <div class="container">
+    <div class="container my-5">
         <div class="row">
             <div class="col">
                 <!-- devo creare una input con button per cercare i film -->
-                 <input type="text" v-model="store.user_input" placeholder="Cerca un film...">
-                 <button @click="searchMovies(store.user_input)">Cerca</button>
+                <input @keyup.enter="searchMovies(store.user_input)" type="text" v-model="store.user_input" placeholder="Cerca un film..." >
+                <button @click="searchMovies(store.user_input)">Cerca</button>
             </div>
         </div>
     </div>
