@@ -63,3 +63,8 @@ Milestone 1:
 Creare una searchbar, con input e button, che permetta la ricerca all'interno dell'API
 Creare un semplice layout per la visualizzazione a schermo
 Restituire a schermo esclusivamente le informazioni richieste nella comanda dell'esercizio
+
+Milestone 2:
+Creare una funzione per assegnare i vari SVG delle bandiere installate tramite npm, cercando di gestire eventuali bandiere mancanti
+Aggiungere la chiamata all'API per le serie tv
+Modificare la ricerca tramite input così da visualizzare a schermo sia i film che le serie tv
