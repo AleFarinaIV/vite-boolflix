@@ -2,13 +2,12 @@
 import { store } from "./store.js"
 import axios from "axios"
 import AppHeader from "./components/AppHeader.vue"
+import AppMain from "./components/AppMain.vue"
  
 export default {
   components: {
-    AppHeader
-  },
-  created() {
-    this.getFilms()
+    AppHeader,
+    AppMain
   },
   methods: {
     getFilms(movie) {
@@ -34,8 +33,10 @@ export default {
 
   <AppHeader @searchMovies="getFilms" />
 
+  <AppMain />
+
 </template>
 
-<style scoped>
+<style>
 @import "./styles/generals.scss"
 </style>
