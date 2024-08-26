@@ -58,3 +58,8 @@ Milestone 0:
 Inizializzare progetto Vue + Vite
 Creare file store.js
 Inserire le API ed eventuali endpoint
+
+Milestone 1:
+Creare una searchbar, con input e button, che permetta la ricerca all'interno dell'API
+Creare un semplice layout per la visualizzazione a schermo
+Restituire a schermo esclusivamente le informazioni richieste nella comanda dell'esercizio
