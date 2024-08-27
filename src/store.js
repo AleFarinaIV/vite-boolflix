@@ -8,5 +8,5 @@ export const store = reactive ({
     movies_array: [],
     user_input: "",
     tv_series_array: [],
-    api_image: 'https://image.tmdb.org/t/p/'
+    api_image: 'https://image.tmdb.org/t/p/',
 })

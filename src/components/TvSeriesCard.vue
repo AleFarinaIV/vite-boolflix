@@ -47,13 +47,13 @@ export default {
 
     #my_col {
         
-        min-height: 430px;
-        max-height: 430px;
+        min-height: 450px;
+        max-height: 450px;
         margin-bottom: 20px;
         
         .content {
-            min-height: 430px;
-            max-height: 430px;
+            min-height: 450px;
+            max-height: 450px;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
