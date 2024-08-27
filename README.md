@@ -72,3 +72,7 @@ Modificare la ricerca tramite input così da visualizzare a schermo sia i film c
 Milestone 3:
 Utilizzando le varie parti dell'url delle immagini a disposizione, aggiungere la copertina di film e serie tv alle card
 Gestire tramite funzione il passaggio dei voti da decimali (da 1 a 10) in interi (da 1 a 5), arrotondando sempre per eccesso, per poi inserire a schermo delle stelle piene in base al voto
+
+Milestone 4:
+Impostare il layout come suggerito nella comanda
+Gestire le card di film e serie tv con effetto hover, passare col mouse su una card farà visualizzare all'utente i dati dell'evento in questione; aggiungere la overview alle info già prese precedentemente
