@@ -15,6 +15,15 @@ export default {
             }
 
             return langToFlag[this.tv_series_card.original_language] || this.tv_series_card.original_language ;
+        },
+        ratingsStars() {
+            const fullStars = Math.round(this.tv_series_card.vote_average / 2)
+            const emptyStars = 5 - fullStars
+
+            const arrayFullStars = Array(fullStars).fill('<i class="bi bi-star-fill"></i>').join('')
+            const arrayEmptyStars = Array(emptyStars).fill('<i class="bi bi-star"></i>').join('')
+
+            return arrayFullStars + arrayEmptyStars
         }
     },
     data() {
@@ -37,7 +46,7 @@ export default {
             <h6>Titolo Originale: {{ tv_series_card.original_name }}</h6>
             <span class="fw-bold me-1">Lingua: {{ tv_series_card.original_language }}</span>
             <span :class="`fi fi-${flagCode}`"></span>
-            <h6>Voto: {{ tv_series_card.vote_average }} </h6>
+            <h6>Voto: <span v-html="ratingsStars"></span> </h6>
         </div>
     </div>
         
