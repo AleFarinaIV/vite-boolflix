@@ -68,3 +68,7 @@ Milestone 2:
 Creare una funzione per assegnare i vari SVG delle bandiere installate tramite npm, cercando di gestire eventuali bandiere mancanti
 Aggiungere la chiamata all'API per le serie tv
 Modificare la ricerca tramite input così da visualizzare a schermo sia i film che le serie tv
+
+Milestone 3:
+Utilizzando le varie parti dell'url delle immagini a disposizione, aggiungere la copertina di film e serie tv alle card
+Gestire tramite funzione il passaggio dei voti da decimali (da 1 a 10) in interi (da 1 a 5), arrotondando sempre per eccesso, per poi inserire a schermo delle stelle piene in base al voto
