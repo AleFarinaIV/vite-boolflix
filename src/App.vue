@@ -43,9 +43,14 @@ export default {
 
 <template>
 
-  <AppHeader @searchMoviesAndSeries="getInput" />
+  <header>
+    <AppHeader @searchMoviesAndSeries="getInput" />
+  </header>
 
-  <AppMain />
+  <main>
+    <AppMain />
+  </main>
+
 
 </template>
 
