@@ -1,29 +1,17 @@
 <script>
 import { store } from "../store.js"
+import { flagCode, ratingsStars } from "../data/usefulFunctions.js"
+
 export default {
     props: {
         tv_series_card: Object
     },
-    computed: {
+    methods: {
         flagCode() {
-            const langToFlag = {
-                en: 'gb',
-                hi: 'in',
-                ja: 'jp',
-                ko: 'kr',
-                zh: 'cn',
-            }
-
-            return langToFlag[this.tv_series_card.original_language] || this.tv_series_card.original_language ;
+            return flagCode(this.tv_series_card.original_language);
         },
         ratingsStars() {
-            const fullStars = Math.round(this.tv_series_card.vote_average / 2)
-            const emptyStars = 5 - fullStars
-
-            const arrayFullStars = Array(fullStars).fill('<i class="bi bi-star-fill"></i>').join('')
-            const arrayEmptyStars = Array(emptyStars).fill('<i class="bi bi-star"></i>').join('')
-
-            return arrayFullStars + arrayEmptyStars
+            return ratingsStars(this.tv_series_card.vote_average);
         }
     },
     data() {
@@ -45,8 +33,8 @@ export default {
             <h6>Titolo: {{ tv_series_card.name }}</h6>
             <h6>Titolo Originale: {{ tv_series_card.original_name }}</h6>
             <span class="fw-bold me-1">Lingua: {{ tv_series_card.original_language }}</span>
-            <span :class="`fi fi-${flagCode}`"></span>
-            <h6>Voto: <span v-html="ratingsStars"></span> </h6>
+            <span :class="`fi fi-${flagCode()}`"></span>
+            <h6>Voto: <span v-html="ratingsStars()"></span> </h6>
         </div>
     </div>
         

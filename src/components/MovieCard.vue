@@ -1,31 +1,18 @@
 <script>
 import { store } from "../store.js"
+import { flagCode, ratingsStars } from "../data/usefulFunctions.js"
 
 export default {
 
     props: {
         movie_card: Object,
     },
-    computed: {
+    methods: {
         flagCode() {
-            const langToFlag = {
-                en: 'gb',
-                hi: 'in',
-                ja: 'jp',
-                ko: 'kr',
-                zh: 'cn',
-            }
-
-            return langToFlag[this.movie_card.original_language] || this.movie_card.original_language ;
+            return flagCode(this.movie_card.original_language);
         },
         ratingsStars() {
-            const fullStars = Math.round(this.movie_card.vote_average / 2)
-            const emptyStars = 5 - fullStars
-
-            const arrayFullStars = Array(fullStars).fill('<i class="bi bi-star-fill"></i>').join('')
-            const arrayEmptyStars = Array(emptyStars).fill('<i class="bi bi-star"></i>').join('')
-
-            return arrayFullStars + arrayEmptyStars
+            return ratingsStars(this.movie_card.vote_average);
         }
     },
     data() {
@@ -46,8 +33,8 @@ export default {
             <h6>Titolo: {{ movie_card.title }}</h6>
             <h6>Titolo Originale: {{ movie_card.original_title }}</h6>
             <span class="fw-bold me-1">Lingua: {{ movie_card.original_language }}</span>
-            <span :class="`fi fi-${flagCode}`"></span>
-            <h6>Voto: <span v-html="ratingsStars"></span> </h6>
+            <span :class="`fi fi-${flagCode()}`"></span>
+            <h6>Voto: <span v-html="ratingsStars()"></span> </h6>
         </div>
     </div>
 </template>
