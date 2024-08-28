@@ -13,11 +13,20 @@ export default {
         },
         ratingsStars() {
             return ratingsStars(this.movie_card.vote_average);
-        }
+        },
+        isTitleSimilar() {
+            return (
+                this.movie_card.title.toLowerCase() === this.movie_card.original_title.toLowerCase()
+            )
+        },
+        toggleInfo(show) {
+            this.showInfo = show;
+        },
     },
     data() {
         return{
-            store
+            store,
+            showInfo: false,
         }
     }
 }
@@ -25,16 +34,18 @@ export default {
 </script>
 
 <template>
-    <div id="my_col" class="col">
+    <div id="my_col" class="col" @mouseover="toggleInfo(true)" @mouseleave="toggleInfo(false)">
         <div class="content">
             <div class="size mb-2">
                 <img :src="movie_card.poster_path !== null ? `${store.api_image}w342${movie_card.poster_path}` : 'https://placehold.co/600x400?text=Copertina%20non%20trovata'" alt="Poster">
             </div>
-            <h6>Titolo: {{ movie_card.title }}</h6>
-            <h6>Titolo Originale: {{ movie_card.original_title }}</h6>
-            <span class="fw-bold me-1">Lingua: {{ movie_card.original_language }}</span>
-            <span :class="`fi fi-${flagCode()}`"></span>
-            <h6>Voto: <span v-html="ratingsStars()"></span> </h6>
+            <div v-if="showInfo" class="info">
+                <h6>Titolo: {{ movie_card.title }}</h6>
+                <h6 v-if="!isTitleSimilar()">Titolo Originale: {{ movie_card.original_title }}</h6>
+                <span class="fw-bold me-1">Lingua: {{ movie_card.original_language }}</span>
+                <span :class="`fi fi-${flagCode()}`"></span>
+                <h6>Voto: <span v-html="ratingsStars()"></span> </h6>
+            </div>
         </div>
     </div>
 </template>
@@ -56,6 +67,8 @@ export default {
             border-radius: 5px;
             margin-bottom: 10px;
             background-color: #f9f9f9;
+            position: relative;
+            overflow: hidden;
 
             .size {
                 width: 100%;
@@ -65,6 +78,27 @@ export default {
                     height: 100%;
                 }
             }
+
+            .info {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.8);
+                color: white;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            }
+        }
+
+        .content:hover .info{
+            opacity: 1;
         }
     }
 
