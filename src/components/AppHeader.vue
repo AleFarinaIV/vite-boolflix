@@ -96,6 +96,7 @@ data() {
             border: none;
             margin-right: 10px;
             background-color: #343a40;
+            color: white;
         }
 
         button {
