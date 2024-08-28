@@ -40,11 +40,27 @@ export default {
                 <img :src="movie_card.poster_path !== null ? `${store.api_image}w342${movie_card.poster_path}` : 'https://placehold.co/600x400?text=Copertina%20non%20trovata'" alt="Poster">
             </div>
             <div v-if="showInfo" class="info">
-                <h6>Titolo: {{ movie_card.title }}</h6>
-                <h6 v-if="!isTitleSimilar()">Titolo Originale: {{ movie_card.original_title }}</h6>
-                <span class="fw-bold me-1">Lingua: {{ movie_card.original_language }}</span>
-                <span :class="`fi fi-${flagCode()}`"></span>
-                <h6>Voto: <span v-html="ratingsStars()"></span> </h6>
+                <div class="info-item">
+                    <span class="label">Titolo:</span>
+                    <span>{{ movie_card.title }}</span>
+                </div>
+                <div v-if="!isTitleSimilar()" class="info-item">
+                    <span class="label">Titolo Originale:</span>
+                    <span>{{ movie_card.original_title }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Lingua:</span>
+                    <span>{{ movie_card.original_language }}</span>
+                    <span :class="`fi fi-${flagCode()}`"></span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Voto:</span>
+                    <span v-html="ratingsStars()"></span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Overview:</span>
+                    <span>{{ movie_card.overview }}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -53,53 +69,68 @@ export default {
 
 <style scoped>
 
-    #my_col {
-
-        min-height: 450px;
-        max-height: 450px;
-        margin-bottom: 20px;
-
-        .content {
-            min-height: 450px;
-            max-height: 450px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            background-color: #f9f9f9;
-            position: relative;
-            overflow: hidden;
-
-            .size {
-                width: 100%;
-                height: 200px;
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-
-            .info {
-                position: absolute;
-                top: 0;
-                left: 0;
+#my_col {
+    
+    min-height: 250px;
+    max-height: 350px;
+    max-width: 300px;
+    margin-bottom: 20px;
+    
+    .content {
+        min-height: 250px;
+        max-height: 350px;
+        max-width: 300px;
+    
+        border-radius: 5px;
+        margin-bottom: 10px;
+        position: relative;
+        overflow: hidden;
+    
+        .size {
+            width: 100%;
+            height: 100%;
+        
+            img {
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0.8);
-                color: white;
-                padding: 10px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                opacity: 0;
-                transition: opacity 0.3s ease-in-out;
+                object-fit: contain;
             }
         }
-
-        .content:hover .info{
-            opacity: 1;
+    
+    
+        .info {
+            font-size: 12px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            
+            .info-item {
+                display: flex;
+                gap: 5px;
+                width: 100%;
+                flex-wrap: wrap;
+            }
+            
+            .label {
+                font-weight: bold;
+            }
         }
     }
+    
+    .content:hover .info{
+        opacity: 1;
+    }
+}
 
 </style>

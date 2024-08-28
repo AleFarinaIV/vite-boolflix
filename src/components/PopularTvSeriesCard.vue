@@ -40,11 +40,27 @@ export default {
                 <img :src="default_tvseries.poster_path !== null ? `${store.api_image}w342${default_tvseries.poster_path}` : 'https://placehold.co/600x400?text=Copertina%20non%20trovata'" alt="Poster">
             </div>
             <div v-if="showInfo" class="info">
-                <h6>Titolo: {{ default_tvseries.name }}</h6>
-                <h6 v-if="!isNameSimilar()">Titolo Originale: {{ default_tvseries.original_name }}</h6>
-                <span class="fw-bold me-1">Lingua: {{ default_tvseries.original_language }}</span>
-                <span :class="`fi fi-${flagCode()}`"></span>
-                <h6>Voto: <span v-html="ratingsStars()"></span> </h6>
+                <div class="info-item">
+                    <span class="label">Titolo:</span>
+                    <span>{{ default_tvseries.name }}</span>
+                </div>
+                <div v-if="!isNameSimilar()" class="info-item">
+                    <span class="label">Titolo Originale:</span>
+                    <span>{{ default_tvseries.original_name }}</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Lingua:</span>
+                    <span>{{ default_tvseries.original_language }}</span>
+                    <span :class="`fi fi-${flagCode()}`"></span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Voto:</span>
+                    <span v-html="ratingsStars()"></span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Overview:</span>
+                    <span>{{ default_tvseries.overview }}</span>
+                </div>
             </div>
         </div>
     </div>
@@ -54,32 +70,36 @@ export default {
 <style scoped>
 
     #my_col {
-
-        min-height: 450px;
-        max-height: 450px;
+        
+        min-height: 250px;
+        max-height: 350px;
+        max-width: 300px;
         margin-bottom: 20px;
-
+        
         .content {
-            min-height: 450px;
-            max-height: 450px;
-            padding: 10px;
-            border: 1px solid #ccc;
+            min-height: 250px;
+            max-height: 350px;
+            max-width: 300px;
+        
             border-radius: 5px;
             margin-bottom: 10px;
-            background-color: #f9f9f9;
             position: relative;
             overflow: hidden;
-
+        
             .size {
                 width: 100%;
-                height: 200px;
+                height: 100%;
+            
                 img {
                     width: 100%;
                     height: 100%;
+                    object-fit: contain;
                 }
             }
-
+        
+        
             .info {
+                font-size: 12px;
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -91,9 +111,20 @@ export default {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
                 opacity: 0;
                 transition: opacity 0.3s ease-in-out;
+
+                .info-item {
+                    display: flex;
+                    gap: 5px;
+                    width: 100%;
+                    flex-wrap: wrap;
+                }
+
+                .label {
+                    font-weight: bold;
+                }
             }
         }
 
