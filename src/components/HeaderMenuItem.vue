@@ -33,7 +33,7 @@ export default {
 <style scoped>
     
     li {
-        margin: 0 15px;
+        margin: 0 5px;
         font-size: 12px;
 
         a {
@@ -41,7 +41,7 @@ export default {
           text-decoration: none;
           transition: color 0.3s ease;
           &:hover {
-            color: rgb(0, 110, 255);
+            color: white;
           }
         }
 
