@@ -1,6 +1,11 @@
 <script>
 import {store} from "../store.js"
+import HeaderMenuItem from "./HeaderMenuItem.vue";
+import { menu } from "../data/headerMenuData.js"
 export default {
+components: {
+    HeaderMenuItem,
+},
 methods: {
     searchMoviesAndSeries(input) {
         this.$emit('searchMoviesAndSeries', input)
@@ -14,12 +19,13 @@ methods: {
     hideSearchbar() {
         this.isSearchbarVisible = false
         store.user_input = ''  // resetto il testo nella input
-    }
+    },
 },
 data() {
     return {
         store,
         isSearchbarVisible: false,
+        menu
     }
 }
 }
@@ -33,16 +39,18 @@ data() {
                 <div class="d-flex align-items-center">
                     <img class="size" src="../assets/logo-netflix.jpg" alt="">
                     <ul class="list-unstyled d-flex ms-3 text-white m-0">
-                        <li>Home</li>
-                        <li>Serie TV</li>
-                        <li>Film</li>
-                        <li>Originali</li>
-                        <li>Aggiunti di recente</li>
-                        <li>La mia lista</li>
+
+                        <HeaderMenuItem 
+                        v-for="section, index in menu"
+                        :key="index"
+                        :label="section.label"
+                        :url="section.url"
+                        :active="section.active"
+                        />
                     </ul>
 
                 </div>
-                <div>
+                <div id="right-header">
                     <!-- devo creare una input con button per cercare i film -->
                     <i class="bi bi-search text-white me-2" @click="searchbarOnClick" v-if="!isSearchbarVisible"></i>
                     <div v-if="isSearchbarVisible" @blur="hideSearchbar" class="d-inline-flex">
@@ -71,13 +79,33 @@ data() {
     ul {
         li {
             margin-right: 10px;
-            font-size: 14px;
+            font-size: 12px;
             cursor: pointer;
         }
     }
 
-    i {
-        cursor: pointer;
+    #right-header {
+
+        i {
+            cursor: pointer;
+        }
+
+        input {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+            background-color: #343a40;
+        }
+
+        button {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #343a40;
+            color: white;
+            border: none;
+        }
     }
+
 
 </style>
