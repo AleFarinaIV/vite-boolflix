@@ -11,14 +11,16 @@ methods: {
         this.$emit('searchMoviesAndSeries', input)
     },
     searchbarOnClick() {
+        store.user_input = ''
         this.isSearchbarVisible = true;
         this.$nextTick(() => {
             this.$refs.searchInput.focus();
         });
     },
     hideSearchbar() {
-        this.isSearchbarVisible = false
-        store.user_input = ''  // resetto il testo nella input
+        setTimeout(() => {
+            this.isSearchbarVisible = false
+        }, 500)
     },
 },
 data() {
@@ -51,8 +53,7 @@ data() {
 
                 </div>
                 <div id="right-header">
-                    <!-- devo creare una input con button per cercare i film -->
-                    <i class="bi bi-search text-white me-2" @click="searchbarOnClick" v-if="!isSearchbarVisible"></i>
+                    <i class="bi bi-search me-2" @click="searchbarOnClick" v-if="!isSearchbarVisible"></i>
                     <div v-if="isSearchbarVisible" @blur="hideSearchbar" class="d-inline-flex">
 
                         <input @keyup.enter="searchMoviesAndSeries(store.user_input)" type="text" 
@@ -88,6 +89,11 @@ data() {
 
         i {
             cursor: pointer;
+            color: white;
+
+            &:hover {
+                color: grey;
+            }
         }
 
         input {
@@ -105,6 +111,11 @@ data() {
             background-color: #343a40;
             color: white;
             border: none;
+            transition: background-color 0.8 ease;
+
+            &:hover {
+                background-color: #212529;
+            }
         }
     }
 

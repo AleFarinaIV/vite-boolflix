@@ -3,8 +3,10 @@
 
 header {
     background-color: #101010;
+    height: 57px;
 }
 
 main {
     background-color: rgb(54, 54, 54);
+    height: calc(100% - 57px);
 }

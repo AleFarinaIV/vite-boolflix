@@ -7,6 +7,7 @@ export const store = reactive ({
     tv_series_endpoint: "/search/tv",
     movies_array: [],
     user_input: "",
+    input_searched: "",
     tv_series_array: [],
     api_image: 'https://image.tmdb.org/t/p/',
     default_movies_array: [],

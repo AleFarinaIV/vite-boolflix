@@ -11,20 +11,27 @@ export default {
   },
   methods: {
     getFilms(input) {
+      store.default_movies_array = []
       let moviesUrl = `${store.api_url}${store.movie_endpoint}${store.api_key}` 
       axios.get(`${moviesUrl}&query=${input}`)
       .then((result) => {
         let movies = result.data.results
         store.movies_array = movies
+        store.input_searched = store.user_input
         console.log(movies)
+        console.log(input)
       })
     },
     getTvSeries(input) {
+      store.default_tvseries_array = []
       let seriesUrl = `${store.api_url}${store.tv_series_endpoint}${store.api_key}`
-      axios.get(`${seriesUrl}&query=${input}`).then((result) => {
+      axios.get(`${seriesUrl}&query=${input}`)
+      .then((result) => {
         let series = result.data.results
         store.tv_series_array = series
+        store.input_searched = store.user_input
         console.log(series)
+        console.log(input)
       })
     },
     getInput(input) {

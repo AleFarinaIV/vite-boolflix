@@ -38,7 +38,9 @@ export default {
     <div id="my_col" class="col" @mouseover="toggleInfo(true)" @mouseleave="toggleInfo(false)">
         <div class="content">
             <div class="size mb-2">
-                <img :src="tv_series_card.poster_path !== null ? `${store.api_image}w342${tv_series_card.poster_path}` : 'https://placehold.co/600x400?text=Copertina%20non%20trovata'" alt="Poster">
+                <img :src="tv_series_card.poster_path !== null 
+                ? `${store.api_image}w342${tv_series_card.poster_path}` 
+                : 'https://placehold.co/600x900?text=Copertina%20non%20trovata'" alt="Poster">
             </div>
             <div v-if="showInfo" class="info">
                 <div class="info-item">
@@ -82,7 +84,7 @@ export default {
             max-height: 350px;
             max-width: 300px;
         
-            border-radius: 5px;
+            border-radius: 10px;
             margin-bottom: 10px;
             position: relative;
             overflow: hidden;

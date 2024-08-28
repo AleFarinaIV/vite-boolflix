@@ -51,22 +51,24 @@ export default {
     <div class="container py-5">
         <div class="col-12">
             <div class="movie_container p-3">
-                <h2 class="text-white mb-4">Film più popolari</h2>
+                <h2 v-if="store.default_movies_array.length > 0" class="text-white mb-4">Film più popolari</h2>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                     <PopularMovieCard v-for="default_movie in store.default_movies_array" :key="default_movie.id"
                     :default_movie="default_movie"/>
                 </div>
+                <h4 v-if="store.movies_array.length > 0" class="text-white mb-4">Risultati per '{{ store.input_searched }}' in Film</h4>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                     <MovieCard v-for="movie in store.movies_array" :key="movie.id" 
                     :movie_card="movie"/>
                 </div>
             </div>
             <div class="tv_series_container p-3">
-                <h2 class="text-white mb-4">Serie TV più popolari</h2>
+                <h2 v-if="store.default_tvseries_array.length > 0" class="text-white mb-4">Serie TV più popolari</h2>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                     <PopularTvSeriesCard v-for="default_tvseries in store.default_tvseries_array" :key="default_tvseries.id"
                     :default_tvseries="default_tvseries"/>
                 </div>
+                <h4 v-if="store.tv_series_array.length > 0" class="text-white mb-4">Risultati per '{{ store.input_searched }}' in Serie TV</h4>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5">
                     <TvSeriesCard v-for="series in store.tv_series_array" :key="series.id" 
                     :tv_series_card="series"/>
@@ -82,7 +84,6 @@ export default {
     .movie_container {
         width: 100%;
         min-height: 500px;
-        margin-bottom: 50px;
     }
 
     .tv_series_container {
